@@ -9,5 +9,6 @@
     </author>
     <content src="index.html" />
     <access origin="*" />
+	<gap:plugin name="org.apache.cordova.camera" version="0.3.2" />
 </widget>
-<gap:plugin name="org.apache.cordova.camera" version="0.3.2" />
+
