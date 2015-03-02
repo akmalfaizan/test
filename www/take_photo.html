@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<title>Pregnancy | Home</title>
+<title>Image-1</title>
 <script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
 <link href="css/global.css" rel="stylesheet" type="text/css" />
 <link href="css/print.css" rel="stylesheet" type="text/css" />
@@ -14,28 +14,16 @@
 <div id="wrapper">
   <div id="container">
     <div class="container">
-      	<div class="left_section">
-        	<ul class="reset">
-            	<li><a href="my_baby.html"><img src="images/baby.jpg"></a></li>
-                <li><a href="#"><img src="images/journal.jpg"></a></li>
-                <li><a href="take_photo.html"><img src="images/photos.jpg"></a></li>
-                <li><a href="#"><img src="images/kicks.jpg"></a></li>
-                <li class="last-child"><a href="#"><img src="images/faqs.jpg"></a></li>
-            </ul> 
-        </div>
-        	
-            <div class="right-section">
-            	<a href="javascript:void(0);" onclick="takeMainPic();"><img id="imgMain" src="images/photo-frame.jpg" style="width:100%;"></a>
-            	<p> Due date:  ______</p>
-                <p>My baby's age: ________</p>
-                <p>Remaining: _________</p>
-                <h3>Quote of the Week!</h3>
-                <p>the best conversation with a mother takes place in silence when only the heart speaks.</p>
-            </div>
-         <div class="clear"></div>
+		<div style="float:left;"><button onclick="takePhoto();" style="height:40px;">Take a Photo</button></div>
+		<div style="float:right;"><button onclick="getPhoto(pictureSource.PHOTOLIBRARY);" style="height:40px;">Get Photo</button></div>
+		<div class="about-baby">
+			<center><img style="display:none;width:100%;" id="dataImage" src="" /></center>
+		</div>
+			
       	</div>
      </div>
-   <div id="footer">
+	
+  <div id="footer">
   		<div class="container">
   			<ul class="reset">
             	<li><a href="index.html"><img src="images/home.jpg"></a></li>
