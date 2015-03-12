@@ -12,6 +12,7 @@
 <script src="js/jquery.min.js"></script>
 <script src="js/jquery-ui.min1.10.2.min.js"></script>
 <script src="js/jquery.mobile-1.3.2.min.js"></script>
+<script type="text/javascript" src="js/db.js"></script>
 <script type="text/javascript">
 var databaseName =  "DummyDB";
 var databaseVersion = "1.0";
@@ -153,6 +154,34 @@ var heightcm = document.getElementById("heightcm").value;
 
 }   
 
+function updateItem()
+{
+	console.log("Entering updateItem");
+var mother_name = document.getElementById("mother_name").value;
+var baby_name = document.getElementById("baby_name").value;
+var gender = document.getElementById("gender").value;
+var due_date = document.getElementById("due_date").value;
+var units = document.getElementById("units").value;
+
+var weightlb = document.getElementById("weightlb").value;
+var weightunit = "pounds";
+var heightft = document.getElementById("heightft").value;
+var heightinches = document.getElementById("heightinches").value;
+
+var weightkg = document.getElementById("weightkg").value;
+var weightunit = "kg";
+//var heightcm = document.getElementById("heightcm").value;
+var heightcm = document.getElementById("heightcm").value;
+	
+	db.transaction(function (tx) {
+		tx.executeSql('UPDATE personalize SET mother_name="'+ mother_name+'",baby_name="'+ baby_name+'",gender="'+ gender+'",due_date="'+due_date+'",units="'+units+'",weightlb="'+weightlb+'",heightft="'+heightft+'",heightinches="'+heightinches+'",weightkg="'+weightkg+'",heightcm="'+heightcm+'"');
+		//console.log('UPDATE personalize SET mother_name="'+ mother_name+'",baby_name="'+ baby_name+'",gender="'+ gender+'",due_date="'+due_date+'",units="'+units+'",weightlb="'+weightlb+'",heightft="'+heightft+'",heightinches="'+heightinches+'",weightkg="'+weightkg+'",heightcm="'+heightcm+'"');
+		//window.location="index.html";
+		}, databaseError);
+		console.log("updateItem OUT");
+
+}
+
 function databaseError(error)
 {
 	alert("DATABASE Error:"+ error.code);
@@ -173,28 +202,14 @@ if(document.getElementById("count").value == '0')
 {
 insertItem();
 }
-
-
-var mother_name = document.getElementById("mother_name").value;
-var baby_name = document.getElementById("baby_name").value;
-var gender = document.getElementById("gender").value;
-var due_date = document.getElementById("due_date").value;
-var units = document.getElementById("units").value;
-
-
-var weightlb = document.getElementById("weightlb").value;
-var weightunit = "pounds";
-var heightft = document.getElementById("heightft").value;
-var heightinches = document.getElementById("heightinches").value;
-
-var weightkg = document.getElementById("weightkg").value;
-var weightunit = "kg";
-//var heightcm = document.getElementById("heightcm").value;
-
-
-//localStorage.setItem('mother_name', mother_name);
-//localStorage.setItem('baby_name', baby_name);
+else
+{
+updateItem();
+}
+setTimeout(function(){
 window.location="index.html";
+}, 200);
+
 }
 
 
@@ -275,7 +290,8 @@ datePicker.show(options, function(date){
 	<a href="javascript:void(0);" onclick="document.getElementById('due_date').value='Due Date';" class="duedates">Due date</a></span></li>
 		  <input type="hidden" name="set_date" id="set_date">
 		  
-          <li class="rightAlign"><a href="" onclick="set_date();">Set Date</a></li>
+    <!--      <li class="rightAlign"><a href="" onclick="set_date();">Set Date</a></li> -->
+		  <input type="date" name="set_date"  id="set_date">
         </ul>
         <div class="clear"></div>
         
