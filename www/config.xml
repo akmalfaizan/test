@@ -64,7 +64,11 @@
     <gap:plugin name="org.apache.cordova.network-information" />
     <gap:plugin name="org.apache.cordova.splashscreen" />
     <gap:plugin name="org.apache.cordova.vibration" />
-	<gap:plugin name="com.apache.cordova.plugin.datepicker"/>
+	<gap:plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    xmlns:rim="http://www.blackberry.com/ns/widgets"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    id="org.apache.cordova.plugin.datepicker"
+    version="1.0.0">
 	
 	<!--<gap:plugin name="com.millerjames01.sqlite-plugin" version="1.0.1" />-->
 <!--	<gap:plugin name="SQLitePlugin" value="SQLitePlugin"/> -->
