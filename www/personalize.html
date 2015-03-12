@@ -210,14 +210,14 @@ window.location="index.html";
 
 function set_date1()
 {
-//alert("SET DATE");
+// defining options
 var options = {
   date: new Date(),
   mode: 'date'
 };
-
+// calling show() function with options and a result handler
 datePicker.show(options, function(date){
-  alert("date result " + date);  
+  console.log("date result " + date);  
 });
 }
 
@@ -285,7 +285,7 @@ datePicker.show(options, function(date){
 	<a href="javascript:void(0);" onclick="document.getElementById('due_date').value='Due Date';" class="duedates">Due date</a></span></li>
 		  <input type="date" name="set_date" id="set_date">
 		  
-          <li class="rightAlign"><a href="" onclick="handleDates();">Set Date</a></li>
+          <li class="rightAlign"><a href="" onclick="set_date1();">Set Date</a></li>
 		  
         </ul>
         <div class="clear"></div>
