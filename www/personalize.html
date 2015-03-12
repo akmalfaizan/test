@@ -73,12 +73,12 @@ function getDatabase()
 
 function onDeviceReady() {
         db =getDatabase();
-		alert("onDeviceReady IN");
+		//alert("onDeviceReady IN");
 		db.transaction(function (tx) {
 		tx.executeSql('CREATE TABLE IF NOT EXISTS personalize ( id INTEGER PRIMARY KEY AUTOINCREMENT, mother_name,baby_name,gender,due_date,units,weightlb,heightft,heightinches,weightkg,heightcm)');
 		}
 		, databaseError, getItems);
-		alert("onDeviceReady OUT");
+		//alert("onDeviceReady OUT");
 }
 
 
@@ -96,11 +96,34 @@ function querySuccess(tx,results)
 	console.log("Entering querySuccess");
 	var len = results.rows.length;
 	var output = '';
-	for(var i=0; i < len ; i++)
+	if(len > 0)
+	{
+	document.getElementById("count").value='1';
+	}
+	else
+	{
+	document.getElementById("count").value='0';
+	}
+	
+document.getElementById("mother_name").value=results.rows.item(0).mother_name;
+document.getElementById("baby_name").value=results.rows.item(0).baby_name;
+document.getElementById("gender").value=results.rows.item(0).gender;
+var a=document.getElementById("gender").value;
+
+document.getElementById("due_date").value=results.rows.item(0).due_date;
+document.getElementById("units").value=results.rows.item(0).units;
+document.getElementById("weightlb").value=results.rows.item(0).weightlb;
+document.getElementById("heightft").value=results.rows.item(0).heightft;
+document.getElementById("heightinches").value=results.rows.item(0).heightinches;
+document.getElementById("weightkg").value=results.rows.item(0).weightkg;
+document.getElementById("heightcm").value=results.rows.item(0).heightcm;	
+
+	
+	/*	for(var i=0; i < len ; i++)
 	{
 		output = output + '<li id="' + results.rows.item(i).id + '">' + results.rows.item(i).mother_name + '</li>';
-	}
-	alert(output+"OUTPUT");
+	} */
+	//alert(output+"OUTPUT");
 }
 
 function insertItem()
@@ -120,13 +143,13 @@ var heightinches = document.getElementById("heightinches").value;
 var weightkg = document.getElementById("weightkg").value;
 var weightunit = "kg";
 //var heightcm = document.getElementById("heightcm").value;
-var heightcm = '7';
+var heightcm = document.getElementById("heightcm").value;
 	
 	db.transaction(function (tx) {
 		tx.executeSql('INSERT INTO personalize(mother_name,baby_name,gender,due_date,units,weightlb,heightft,heightinches,weightkg,heightcm) VALUES("'+ mother_name+'","'+ baby_name+'","'+ gender+'","'+due_date+'","'+units+'","'+weightlb+'","'+heightft+'","'+heightinches+'","'+weightkg+'","'+heightcm+'")');
 		console.log('INSERT INTO personalize(mother_name,,baby_name,gender,due_date,units,weightlb,heightft,heightinches,weightkg,heightcm) VALUES("'+ mother_name+'","'+ baby_name+'","'+ gender+'","'+due_date+'","'+units+'","'+weightlb+'","'+heightft+'","'+heightinches+'","'+weightkg+'","'+heightcm+'")');
-		}, databaseError,getItems);
-		alert("insertItem OUT");
+		}, databaseError);
+		//alert("insertItem OUT");
 
 }   
 
@@ -145,8 +168,12 @@ $(document).ready(function(){
 function save_data()
 {
 	console.log("Got Tasks..!!");
-	
+getItems();
+if(document.getElementById("count").value == '0')
+{
 insertItem();
+}
+
 
 var mother_name = document.getElementById("mother_name").value;
 var baby_name = document.getElementById("baby_name").value;
@@ -167,11 +194,22 @@ var weightunit = "kg";
 
 //localStorage.setItem('mother_name', mother_name);
 //localStorage.setItem('baby_name', baby_name);
-
+window.location="index.html";
 }
 
 
+function set_date()
+{
+ 
+var options = {
+  date: new Date(),
+  mode: 'date'
+};
 
+datePicker.show(options, function(date){
+  alert("date result " + date);  
+});
+}
 
 
 </script>
@@ -196,6 +234,7 @@ var weightunit = "kg";
           <li>
             <label>Mother's Name:</label>
             <div class="fieldlft">
+			<input type="hidden" name="count" id="count">
               <input class="input" name="mother_name" id="mother_name"type="text">
             </div>
           </li>
@@ -216,9 +255,9 @@ var weightunit = "kg";
 			
 			<span class="btn"> 
 			<input type="hidden" name="gender" id="gender" value="Unknown">
-	<a href="javascript:void(0);" onclick="document.getElementById('gender').value='Unknown';" alt="Unknown" class="unknown genders">Unknown</a> 
-	<a href="javascript:void(0);" onclick="document.getElementById('gender').value='Female';" alt="Female"class="genders">Female</a>
-	<a href="javascript:void(0);" onclick="document.getElementById('gender').value='Male';" alt="Male" class="genders">Male</a></span>
+	<a href="javascript:void(0);" id="gender1" onclick="document.getElementById('gender').value='Unknown';" alt="Unknown" class="unknown genders">Unknown</a> 
+	<a href="javascript:void(0);"  id="gender2" onclick="document.getElementById('gender').value='Female';" alt="Female"class="genders">Female</a>
+	<a href="javascript:void(0);" id="gender3" onclick="document.getElementById('gender').value='Male';" alt="Male" class="genders">Male</a></span>
 			</div>
           </li>
         </ul>
@@ -236,7 +275,7 @@ var weightunit = "kg";
 	<a href="javascript:void(0);" onclick="document.getElementById('due_date').value='Due Date';" class="duedates">Due date</a></span></li>
 		  <input type="hidden" name="set_date" id="set_date">
 		  
-          <li class="rightAlign">Set Date</li>
+          <li class="rightAlign"><a href="" onclick="set_date();">Set Date</a></li>
         </ul>
         <div class="clear"></div>
         
@@ -273,7 +312,7 @@ var weightunit = "kg";
           <li class="leftAlign">
             <label class="width100">Height:</label>
             <div class="fieldlft">
-              <input class="input width140" name="heightcm" type="text">
+              <input class="input width140" name="heightcm" id="heightcm" type="text">
             </div>
             <div class="text text-margin">cm</div>
           </li>
