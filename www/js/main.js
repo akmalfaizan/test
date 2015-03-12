@@ -1,3 +1,4 @@
+
 var pictureSource;
 var destinationType;
 

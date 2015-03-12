@@ -1,5 +1,5 @@
 /*** GLOBAL SETTING ***/
-body {margin:0; padding:0;font:normal 13px Arial, Helvetica, sans-serif; color:#5b5b5b;background:#b7ddb9; line-height:normal;}
+body {margin:0; padding:0;font:normal 13px Arial, Helvetica, sans-serif; color:#5b5b5b; line-height:normal;}
 
 /*** GLOBAL SELECTORS ***/
 a{ color:#c81221; }
@@ -17,8 +17,8 @@ a:hover{ color:#000000;}
 #header .container li a.hold{color:#ffffff; font-weight:bold;}
 #header .container li.last-child{margin:0;}
 
-#container{ width:100%;}
-#container .container{padding-top:10px; padding-bottom:130px;}
+#container{background:#b7ddb9; width:100%;}
+#container .container{padding-top:10px;}
 #container .container h1{font-size:30px; color:#000; margin-bottom:20px;}
 
 #container .container li{margin-bottom:10px;font-size:20px;color:#000; font-weight:bold; overflow:hidden  }
@@ -52,9 +52,9 @@ a:hover{ color:#000000;}
 
 #container .container li span.width291 a{width:50%;}
 
-#container .container .rest-text{text-align:center; color:#568b4d; font-size:40px; font-weight:bold; padding:50px 0;}
+#container .container .rest-text{text-align:center; color:#568b4d; font-size:40px; font-weight:bold; padding:80px 0;}
 
-#footer{width:100%; background:#f7f7f7; position:fixed; left:0px; bottom:0px; border-top:1px solid #809a81;}
+#footer{width:100%; background:#f7f7f7; border-top:1px solid #809a81;}
 #footer .container li{float:left;}
 
 
@@ -73,3 +73,54 @@ a:hover{ color:#000000;}
 #container .container .right-section{float:left; width:396px;}
 #container .container .right-section p{font-size:18px;margin-bottom:8px; color:#000;}
 #container .container .right-section h3{color:#000; font-size:20px; margin:20px 0;}
+
+
+/*readio-btn csss*/
+
+.demo fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+.demo legend {
+    padding: 0;
+    margin: 0;
+}
+.demo label {
+    cursor: pointer;
+    display: block;
+    float: left;
+    padding: .2em .4em;
+    background-color: #ccc;
+	width:150px !important;
+	margin:0px !important;
+	float:left;
+	border:2px solid #568b4d;
+    background: none repeat scroll 0 0 ;
+    color: #568b4d;
+}
+.demo label:first-child {
+    border-left-width: 1px;
+    border-top-left-radius: .2em;
+    border-bottom-left-radius: .2em;
+}
+.demo label:last-child {
+    border-top-right-radius: .2em;
+    border-bottom-right-radius: .2em;
+}
+.demo label.selected {
+    background-color: #0066CC;
+    color: white;
+    background: none repeat scroll 0 0 #568b4d;
+    color: #d9edda;
+}
+.demo label.warning.selected {
+    background-color: red;
+    border-color: darkred;
+}
+.demo input[type="radio"] {
+   position: absolute;
+   top: -9999px;
+   left: -9999px;
+}
+/*readio-btn csss*/

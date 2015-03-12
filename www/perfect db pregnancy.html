@@ -75,7 +75,7 @@ function onDeviceReady() {
         db =getDatabase();
 		alert("onDeviceReady IN");
 		db.transaction(function (tx) {
-		tx.executeSql('CREATE TABLE IF NOT EXISTS personalize ( id INTEGER PRIMARY KEY AUTOINCREMENT, mother_name,baby_name,gender,due_date,units,weightlb,heightft,heightinches,weightkg,heightcm)');
+		tx.executeSql('CREATE TABLE IF NOT EXISTS tasks ( id INTEGER PRIMARY KEY AUTOINCREMENT, name)');
 		}
 		, databaseError, getItems);
 		alert("onDeviceReady OUT");
@@ -86,7 +86,7 @@ function getItems()
 {
 	console.log("Entering get Items..!!");
 	db.transaction(function (tx) {
-		tx.executeSql('SELECT * FROM personalize',[],querySuccess);
+		tx.executeSql('SELECT * FROM tasks',[],querySuccess);
 		}, databaseError);
 	console.log("Leaving get Items..!!");
 }
@@ -98,7 +98,7 @@ function querySuccess(tx,results)
 	var output = '';
 	for(var i=0; i < len ; i++)
 	{
-		output = output + '<li id="' + results.rows.item(i).id + '">' + results.rows.item(i).mother_name + '</li>';
+		output = output + '<li id="' + results.rows.item(i).id + '">' + results.rows.item(i).name + '</li>';
 	}
 	alert(output+"OUTPUT");
 }
@@ -106,25 +106,10 @@ function querySuccess(tx,results)
 function insertItem()
 {
 	console.log("Entering insertItem");
-var mother_name = document.getElementById("mother_name").value;
-var baby_name = document.getElementById("baby_name").value;
-var gender = document.getElementById("gender").value;
-var due_date = document.getElementById("due_date").value;
-var units = document.getElementById("units").value;
-
-var weightlb = document.getElementById("weightlb").value;
-var weightunit = "pounds";
-var heightft = document.getElementById("heightft").value;
-var heightinches = document.getElementById("heightinches").value;
-
-var weightkg = document.getElementById("weightkg").value;
-var weightunit = "kg";
-//var heightcm = document.getElementById("heightcm").value;
-var heightcm = '7';
+	var insertValue = document.getElementById("mother_name").value;
 	
 	db.transaction(function (tx) {
-		tx.executeSql('INSERT INTO personalize(mother_name,baby_name,gender,due_date,units,weightlb,heightft,heightinches,weightkg,heightcm) VALUES("'+ mother_name+'","'+ baby_name+'","'+ gender+'","'+due_date+'","'+units+'","'+weightlb+'","'+heightft+'","'+heightinches+'","'+weightkg+'","'+heightcm+'")');
-		console.log('INSERT INTO personalize(mother_name,,baby_name,gender,due_date,units,weightlb,heightft,heightinches,weightkg,heightcm) VALUES("'+ mother_name+'","'+ baby_name+'","'+ gender+'","'+due_date+'","'+units+'","'+weightlb+'","'+heightft+'","'+heightinches+'","'+weightkg+'","'+heightcm+'")');
+		tx.executeSql('INSERT INTO tasks(name) VALUES("'+ insertValue+'")');
 		}, databaseError,getItems);
 		alert("insertItem OUT");
 
@@ -147,27 +132,15 @@ function save_data()
 	console.log("Got Tasks..!!");
 	
 insertItem();
-
+/*	
 var mother_name = document.getElementById("mother_name").value;
 var baby_name = document.getElementById("baby_name").value;
-var gender = document.getElementById("gender").value;
-var due_date = document.getElementById("due_date").value;
-var units = document.getElementById("units").value;
 
+localStorage.setItem('mother_name', mother_name);
+localStorage.setItem('baby_name', baby_name);
 
-var weightlb = document.getElementById("weightlb").value;
-var weightunit = "pounds";
-var heightft = document.getElementById("heightft").value;
-var heightinches = document.getElementById("heightinches").value;
-
-var weightkg = document.getElementById("weightkg").value;
-var weightunit = "kg";
-//var heightcm = document.getElementById("heightcm").value;
-
-
-//localStorage.setItem('mother_name', mother_name);
-//localStorage.setItem('baby_name', baby_name);
-
+alert(baby_name);
+*/
 }
 
 
