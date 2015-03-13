@@ -11,5 +11,12 @@
             "url": "https://github.com/kdileep1990/com.dileep.plugins.datepicker",
             "subdir": "."
         }
+    },
+    "nl.moreapps.datepicker": {
+        "source": {
+            "type": "git",
+            "url": "https://github.com/DURK/cordova-datepicker-plugin",
+            "subdir": "."
+        }
     }
 }

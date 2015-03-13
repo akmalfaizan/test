@@ -10,7 +10,9 @@
 <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 <link href="css/responsive.css" rel="stylesheet" type="text/css">
 <script src="js/jquery.min.js"></script>
-<script src="js/DatePicker.js"></script>
+<link rel="stylesheet" href="css/jquery.ui.datepicker.mobile.css" /> 
+<script src="js/jQuery.ui.datepicker.js"></script>
+<script src="js/jquery.ui.datepicker.mobile.js"></script>
 <!--<script src="js/jquery.mobile-1.3.2.min.js"></script>-->
 <script type="text/javascript" src="js/db.js"></script>
 <script type="text/javascript">
@@ -183,7 +185,9 @@ function databaseError(error)
 
    
 $(document).ready(function(){
-	
+	 $( document ).bind( "mobileinit", function(){
+    $.mobile.page.prototype.options.degradeInputs.date = true;
+  });
 
 });
 
@@ -208,9 +212,15 @@ window.location="index.html";
 
 function set_date1()
 {
-
 alert("ANDROID");
+
 }
+
+
+
+
+
+
 
 
 </script>
@@ -274,7 +284,7 @@ alert("ANDROID");
 	<a href="javascript:void(0);" onclick="document.getElementById('due_date').value='Not Pregnant';" class="unknown duedates">Not Pregnant</a> 
 	<a href="javascript:void(0);" onclick="document.getElementById('due_date').value='LMP';" class="side-line duedates">LMP </a>
 	<a href="javascript:void(0);" onclick="document.getElementById('due_date').value='Due Date';" class="duedates">Due date</a></span></li>
-		  <input type="hidden" name="set_date" id="set_date">
+		  <input type="text" name="set_date" id="set_date">
 		  
           <li class="rightAlign"><a href="" onclick="set_date1();">Set Date</a></li>
 		  

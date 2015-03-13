@@ -4,8 +4,23 @@
         "uninstalled": []
     },
     "config_munge": {
-        "files": {}
+        "files": {
+            "res/xml/config.xml": {
+                "parents": {
+                    "/*": [
+                        {
+                            "xml": "<feature name=\"Datepicker\"><param name=\"android-package\" value=\"nl.moreapps.datepicker.Datepicker\" /></feature>",
+                            "count": 1
+                        }
+                    ]
+                }
+            }
+        }
     },
-    "installed_plugins": {},
+    "installed_plugins": {
+        "nl.moreapps.datepicker": {
+            "PACKAGE_NAME": "com.phonegap.helloworld"
+        }
+    },
     "dependent_plugins": {}
 }

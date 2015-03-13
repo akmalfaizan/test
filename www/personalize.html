@@ -214,6 +214,32 @@ alert("ALL");
 
 
 </script>
+<script type="text/javascript" src="js/libs/jquery.js"></script>
+<script type="text/javascript" src="js/index1.js"></script>
+<script type="text/javascript" src="js/nativedatepicker.js"></script>
+<script type="text/javascript">
+            app.initialize();
+            console.debug("INITIALIZE")
+            (function($){
+                $(document).ready(function () {
+                    $(document).on('click', '.datepicker', function () {
+                        showDatePicker($(this), 'date');
+                    });
+
+                    $(document).on('click', '.timepicker', function () {
+                        showDatePicker($(this), 'time');
+                    });
+
+                    $(document).on('click', '.datetimepicker', function () {
+                        if (device.platform === "Android")
+                            showDateTimePicker($(this));
+                        else
+                            showDatePicker($(this), 'datetime');
+                    });
+                });
+            })(jQuery);
+        </script>
+
 </head>
 <body onload="onDeviceReady();">
 <div id="wrapper">
@@ -275,7 +301,7 @@ alert("ALL");
 	<a href="javascript:void(0);" onclick="document.getElementById('due_date').value='LMP';" class="side-line duedates">LMP </a>
 	<a href="javascript:void(0);" onclick="document.getElementById('due_date').value='Due Date';" class="duedates">Due date</a></span></li>
 		  <input type="hidden" name="set_date" id="set_date">
-		  
+		  <input type="text" class="datepicker">
           <li class="rightAlign"><a href="" onclick="set_date1();">Set Date</a></li>
 		  
         </ul>

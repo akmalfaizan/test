@@ -71,4 +71,7 @@
         <string>100</string>
     </gap:config-file>
     <access origin="*" />
+    <feature name="Datepicker">
+        <param name="android-package" value="nl.moreapps.datepicker.Datepicker" />
+    </feature>
 </widget>
