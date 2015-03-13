@@ -214,32 +214,8 @@ alert("ALL");
 
 
 </script>
-<script type="text/javascript" src="js/libs/jquery.js"></script>
 <script type="text/javascript" src="css/index1.css"></script>
-<script type="text/javascript" src="js/index1.js"></script>
-<script type="text/javascript" src="js/nativedatepicker.js"></script>
-<script type="text/javascript">
-            app.initialize();
-            console.debug("INITIALIZE")
-            (function($){
-                $(document).ready(function () {
-                    $(document).on('click', '.datepicker', function () {
-                        showDatePicker($(this), 'date');
-                    });
 
-                    $(document).on('click', '.timepicker', function () {
-                        showDatePicker($(this), 'time');
-                    });
-
-                    $(document).on('click', '.datetimepicker', function () {
-                        if (device.platform === "Android")
-                            showDateTimePicker($(this));
-                        else
-                            showDatePicker($(this), 'datetime');
-                    });
-                });
-            })(jQuery);
-        </script>
 
 </head>
 <body onload="onDeviceReady();">
@@ -375,4 +351,29 @@ alert("ALL");
   </div>
 </div>
 </body>
+<script type="text/javascript" src="js/libs/jquery.js"></script>
+<script type="text/javascript" src="js/index1.js"></script>
+<script type="text/javascript" src="js/nativedatepicker.js"></script>
+<script type="text/javascript">
+            app.initialize();
+            console.debug("INITIALIZE")
+            (function($){
+                $(document).ready(function () {
+                    $(document).on('click', '.datepicker', function () {
+                        showDatePicker($(this), 'date');
+                    });
+
+                    $(document).on('click', '.timepicker', function () {
+                        showDatePicker($(this), 'time');
+                    });
+
+                    $(document).on('click', '.datetimepicker', function () {
+                        if (device.platform === "Android")
+                            showDateTimePicker($(this));
+                        else
+                            showDatePicker($(this), 'datetime');
+                    });
+                });
+            })(jQuery);
+        </script>
 </html>
