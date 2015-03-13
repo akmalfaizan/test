@@ -2,6 +2,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
 <title>Image-1</title>
 
 <script type="text/javascript" charset="utf-8" src="js/main.js"></script>
@@ -277,8 +278,7 @@ alert("ALL");
 	<a href="javascript:void(0);" onclick="document.getElementById('due_date').value='LMP';" class="side-line duedates">LMP </a>
 	<a href="javascript:void(0);" onclick="document.getElementById('due_date').value='Due Date';" class="duedates">Due date</a></span></li>
 		  <input type="hidden" name="set_date" id="set_date">
-		  <input type="text" class="datepicker">
-          <li class="rightAlign"><a href="" onclick="set_date1();">Set Date</a></li>
+		          <li class="rightAlign"><a href="" onclick="set_date1();">Set Date</a></li>
 		  
         </ul>
         <div class="clear"></div>
@@ -335,6 +335,12 @@ alert("ALL");
       </form>
     </div>
   </div>
+            <p>Date picker</p>
+            <input type="text" class="datepicker">
+            <p>Time picker</p>
+            <input type="text" class="timepicker">
+            <p>Datetime picker</p>
+            <input type="text" class="datetimepicker">
   <div class="clear"></div>
   <div id="footer">
   		<div class="container">
@@ -349,13 +355,17 @@ alert("ALL");
   		</div>
   </div>
 </div>
+
 </body>
 <script type="text/javascript" src="js/index1.js"></script>
 <script type="text/javascript" src="js/nativedatepicker.js"></script>
 <script type="text/javascript">
             app.initialize();
             console.debug("INITIALIZE")
-            (function($){
+</script>
+		
+<script type="text/javascript">
+(function($){
                 $(document).ready(function () {
                     $(document).on('click', '.datepicker', function () {
                         showDatePicker($(this), 'date');
